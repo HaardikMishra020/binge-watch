@@ -1,9 +1,3 @@
-// const { productSchema } = require("./schema");
-// const { reviewSchema } = require("./schema");
-const passport = require('passport');
-const Product = require("./models/Movie");
-
-
 const isLoggedIn = (req,res,next)=>{
     // console.log(req.originalUrl);
     // console.log(req.xhr);
