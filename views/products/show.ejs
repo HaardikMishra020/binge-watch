@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BingeWatch- Your Movie Gallery</title>
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://kit.fontawesome.com/96b33ffa46.js" crossorigin="anonymous"></script>
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+    <!-- style sheets -->
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/star.css">
+</head>
+<body class="d-flex flex-column vh-100">
+    <div class="showimg">
+    <header>
+        <%- include('../partials/navbar') %>
+    </header>
+
+<main>
+<section class="container" >
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm mx-1 d-flex flex-row" style="width: 100%;"">
+                <img src="<%=movie.Poster%>" class="card-img-left" alt="item image" style="width: 40%;">
+                <div class="card-body">
+                    <h3 class="card-title"><strong><%= movie.Title %></strong></h3>
+                    <p class="card-text"><strong>Date: </strong><%= movie.Released %></p>
+                    <p class="card-text"><strong>Actors:</strong> <%= movie.Actors %></p>
+                    <p class="card-text"><strong>Director:</strong>  <%= movie.Director %></p>
+                    <p class="card-text"><strong> Rated:</strong>  <%= movie.Rated %></p>
+                    <p class="card-text"><strong> Genre:</strong>  <%= movie.Genre %></p>
+                    <p class="card-text"><strong> Plot:</strong>  <%= movie.Plot %></p>
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addToPlaylist">
+                        Add to Playlist
+                      </button>
+                      
+                      <!-- Modal -->
+                      <div class="modal fade" id="addToPlaylist" tabindex="-1" aria-labelledby="addToPlaylistLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h1 class="modal-title fs-5" id="addToPlaylistLabel">Add to Playlist</h1>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/products/<%= movie.imdbID %>/movies" method="POST">
+                                    <input type="hidden" name="movieId" value="<%= movie.imdbID %>">
+                                    <div class="form-group">
+                                        
+                                            <% playlists.forEach(playlist => { %>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" name="playlistIds" value="<%= playlist._id %>" id="playlist-<%= playlist._id %>">
+                                                    <label class="form-check-label" for="playlist-<%= playlist._id %>">
+                                                        <%= playlist.name %>
+                                                    </label>
+                                                </div>                                            <% }) %>
+                                        </select>
+                                    </div>
+                                
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div></form>
+                          </div>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script src="/js/script.js"></script></div>
+</body>
+</html>

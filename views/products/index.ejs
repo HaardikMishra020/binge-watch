@@ -1,0 +1,47 @@
+<% layout('layouts/boilerplate') -%>
+
+<section class="container">
+
+
+  <%- include('../partials/flash')  %>
+  
+  <!-- <section id="heading"> 
+    <h4><span class="fa-solid fa-bars-staggered"></span> Your Playlists</h4>
+  </section> -->
+  <div class="row products playlists">
+      <%for(let playlist of playlists){%>
+          <div class="col-lg-3 col-md-6 mb-3">
+              <div class="card shadow-sm mx-auto position-relative" style="width: 20rem;">
+                <% if(playlist.movies.length>0){ %>
+                  <img style="height:15rem; width:100%;"src="<%= playlist.movies[playlist.movies.length-1].Poster %>" class="card-img-top" alt="item image"><% } %>
+                  <!-- <span class="badge rounded-pill bg-light text-dark w-25 position-absolute translate-middle-y" style="top:41%;left:5%">  &star; |</span> -->
+                   <div class="card-body">
+                    <h5 class="card-title d-flex justify-content-between align-items-center">
+                      <span><%= playlist.name %></span>
+                      <span class="btn">
+                        <% if(playlist.visibleToAll){ %>
+
+                          <i style="font-size: 1rem;" class="fa-solid fa-link"></i>
+                          <p style="font-size: 10px;">Anyone with a link</p>
+                          <% } else{ %>
+                            <i style="font-size: 1rem;" class="fa-solid fa-lock"></i>
+                            <p style="font-size: 10px;">Private</p>
+                            <% } %>
+                      </span>
+                     </h5>
+                     <p style="margin-bottom: 0.5rem;"><%= playlist.movies.length %> Movies</p>
+                    <a href="/products/<%=playlist._id%>" class="btn btn-sm show-btn"  style="background-color: #2D3640;">View Now</a>
+                   
+              </div>
+            </div>
+          </div>
+      <%}%>
+      <span style="margin-bottom: 10vh; display: flex;"><a style="text-decoration: none; color: black;" href="/products/new"><i style="font-size: 3rem; " class="fa-solid fa-plus"></i><h5>Create a new playlist</h5></a></span>
+
+      
+        
+  </div>
+</section>
+
+
+<script src="/js/common.js"></script>

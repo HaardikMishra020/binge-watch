@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate') -%>
+
+<section class="container">
+
+
+  <%- include('../partials/flash')  %>
+  <section id="heading"> 
+    <h4 class="text-capitalize"><span class="fa-solid fa-bars-staggered"></span> <%=playlist.name%> by <%=name%></h4>
+  </section>
+  <div class="row products">
+      <%for(let movie of playlist.movies){%>
+          <div class="col-lg-3 col-md-6 mb-3">
+            <a href="/search/<%=movie.imdbID%>" style="text-decoration: none;">
+              <div class="card shadow-sm mx-auto position-relative" style="width:20rem;">
+                  <img src="<%=movie.Poster%>" class="card-img-top pvtimg" alt="Movie Poster">
+                  <p class="mx-auto" style=" color: black;"><%= movie.Title %></p>
+                  <!-- <span class="badge rounded-pill bg-light text-dark w-25 position-absolute translate-middle-y" style="top:41%;left:5%">  &star; |</span> -->
+                  <!-- <div class="card-body">
+                    <h5 class="card-title d-flex justify-content-between align-items-center">
+                      <span><strong><%= movie.Title %></strong></span>
+                     </h5>
+                     <p>Year: <%= movie.Year %></p>
+                     <p>Actors: <%= movie.Actors %></p>
+                     <p>Director: <%= movie.Director %></p>
+              </div> -->
+            </div>
+        </a></div>
+      <%}%>
+
+      
+        
+  </div>
+</section>
+
+
+<script src="/js/common.js"></script>
