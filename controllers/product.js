@@ -37,7 +37,7 @@ const searchResults = async (req, res) => {
 const showMovie=async(req,res)=>{
     const movieId = req.params.id;
     const apiKey = process.env.API_KEY; // Replace with your actual API key
-    const apiUrl = `http://www.omdbapi.com/?i=${movieId}&apikey=${apiKey}&plot=full`;
+    const apiUrl = `http://www.omdbapi.com/?i=${movieId}&apikey=${apiKey}&plot=short`;
     try{
         let movie = await Movie.findOne({ imdbID: movieId });
         
@@ -58,7 +58,7 @@ const addToPlaylist=async(req,res)=>{
     const { playlistIds } = req.body;
     const { id } = req.params;
     const apiKey = process.env.API_KEY;  // Replace with your actual API key
-    const apiUrl = `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`;
+    const apiUrl = `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}&plot=short`;
 
     try {
         // Check if the movie already exists in the database
