@@ -44,3 +44,24 @@ npm start
 ```
 
 Open [http://localhost:5000](http://localhost:5000) in your browser to view the project.
+
+## Screenshots of the Project
+
+**Login Page**
+![Login Page](images/login.png)
+
+
+
+**Home Page**
+![Main Page](images/homepg.png)
+
+
+
+**Search page**
+![Search](images/search.png)
+
+
+
+**Playlist page**
+![Playlist](images/playlist.png)
+
